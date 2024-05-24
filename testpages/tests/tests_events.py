@@ -104,3 +104,4 @@ def event_on_key_down(page: Page):
         page.screenshot(path="screenshots/event_on_key_down.png")
 
     return event_on_key_down_func
+k
