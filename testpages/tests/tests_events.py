@@ -80,3 +80,27 @@ def event_on_double_click(page: Page):
         page.screenshot(path="screenshots/event_on_double_click.png")
 
     return event_on_double_click_func
+
+
+@pytest.fixture
+def event_on_focus(page: Page):
+    def event_on_focus_func():
+        page.goto(data_page_events)
+        page.wait_for_timeout(1000)
+        page.click(locator_on_focus)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/event_on_focus.png")
+
+    return event_on_focus_func
+
+
+@pytest.fixture
+def event_on_key_down(page: Page):
+    def event_on_key_down_func():
+        page.goto(data_page_events)
+        page.wait_for_timeout(1000)
+        page.click(locator_on_key_down, button="middle")
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/event_on_key_down.png")
+
+    return event_on_key_down_func
