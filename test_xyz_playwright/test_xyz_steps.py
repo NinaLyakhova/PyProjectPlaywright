@@ -7,7 +7,7 @@ from test_data import *
 @pytest.fixture
 def login_bank_customer(page: Page):  # pytest -k login test_step.py
     def login_bank_customer_function():
-        page.goto("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login")
+        page.goto('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login')
         page.click(locator_button_your_name)
         page.click(locator_button_login_customer)
         page.fill(locator_select_harry)
