@@ -57,6 +57,8 @@ def event_on_clic(page: Page):
         page.click(locator_on_click)
         page.wait_for_timeout(3000)
         page.screenshot(path="screenshots/event_on_click.png")
+        class_event = page.query_selector(locator_on_click).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return event_on_clic_func
 
@@ -69,6 +71,8 @@ def event_context_menu(page: Page):
         page.click(locator_on_context_menu, button='right')
         page.wait_for_timeout(3000)
         page.screenshot(path="screenshots/event_on_context_menu.png")
+        class_event = page.query_selector(locator_on_context_menu).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return event_on_context_menu_func
 
@@ -81,6 +85,8 @@ def event_double_click(page: Page):
         page.dblclick(locator_on_double_click)
         page.wait_for_timeout(1000)
         page.screenshot(path="screenshots/show_double_click.png")
+        class_event = page.query_selector(locator_on_double_click).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return double_click_func()
 
@@ -95,7 +101,8 @@ def event_focus(page: Page):
         page.wait_for_timeout(1000)
         page.screenshot(path="screenshots/event_on_focus.png", full_page=True)
         text_content = page.inner_text("#onfocusstatus")
-        assert "Event Triggered" in text_content
+        class_event = page.query_selector(locator_on_focus).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return event_focus_func
 
@@ -108,6 +115,8 @@ def event_key_down(page: Page):
         page.press('#keyUpButton', 'Enter')
         page.wait_for_timeout(3000)
         page.screenshot(path="screenshots/event_on_key_down.png")
+        class_event = page.query_selector(locator_on_key_down).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return event_on_key_down_func
 
