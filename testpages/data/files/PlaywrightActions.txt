@@ -1,0 +1,86 @@
+# Инициализация Playwright и запуск браузера
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=False)
+    page = browser.new_page()
+    # Здесь вставляешь свой код
+    browser.close()
+	
+# Навигация
+# Переход по URL
+page.goto('https://example.com')
+# Перезагрузка страницы
+page.reload()
+# Вперед/назад по истории
+page.goBack()
+page.goForward()
+
+# Работа с элементами
+# Выбор локатора
+locator = page.locator("#css")
+# Кликнуть элемент
+page.click('button')
+page.locator("#css").click();
+# Ввести текст в поле ввода
+page.type('input[name="username"]', 'your_username')
+# Нажать клавишу Enter
+page.press('input[name="password"]', 'Enter')
+# Получить текстовое содержимое элемента
+text = page.text_content('h1')
+# Выбор опции в раскрывающемся списке
+page.select_option('select', label='Option 1')
+page.selectOption("#css", 'blue')                    # по внутреннему значению
+page.selectOption("#css", label='Blue ink')          # по видимой метке
+page.selectOption("#css", index=1)                   # на базе индекса
+page.selectOption("#css", ['red', 'blue'])           # мульти выбор
+# Ожидание появления или видимости элементов
+page.wait_for_selector('div#my-element', state='visible')
+# Проверка, существует ли элемент
+assert page.locator("button").is_visible()
+# Проверка заголовка страницы
+assert page.title() == "Expected Title"
+# Чек боксы
+page.check('#css')
+page.uncheck('#css')
+
+# Скриншоты и PDF
+# Снять скриншот
+page.screenshot(path='screenshot.png')
+# Сгенерировать PDF
+page.pdf(path='document.pdf')
+
+# Работа с cookies
+# Получить все файлы cookie
+cookies = page.cookies()
+# Установить cookie
+page.set_cookie(name='my_cookie', value='cookie_value')
+# Удалить файл cookie
+page.delete_cookie(name='my_cookie')
+
+# Алерты и диалоговые окна
+# Принятие JS-алерта
+page.on('dialog').accept()
+# Отклонение JS-алерта
+page.on('dialog').dismiss()
+
+# Клавиатура и мышь
+# Ввести текст
+page.type('input', 'Hello, Playwright!')
+# Нажать и отпустить клавишу
+page.keyboard.press('Enter')
+page.keyboard.release('Shift')
+# Передвинуть мышь и кликнуть
+page.mouse.move(100, 100)
+page.mouse.click()
+
+# Выполнение (eval) Javascript-кода
+# Выполнить JavaScript-код в контексте страницы
+result = page.evaluate('1 + 2')
+
+# Фреймы
+# Переход к фрейму по имени, id или индексу
+page.frame(name='frameName')
+page.frame(index=0)
+# Выполнить код в контексте фрейма
+frame = page.frame(index=0)
+frame.evaluate('console.log("Hello from frame!")')

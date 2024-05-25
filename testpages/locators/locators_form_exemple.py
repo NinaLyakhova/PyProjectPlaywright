@@ -1,0 +1,16 @@
+locator_username = '#HTMLFormElements > table > tbody > tr:nth-child(1) > td > input[type=text]'
+locator_password = '#HTMLFormElements > table > tbody > tr:nth-child(2) > td > input[type=password]'
+locator_textarea = '#HTMLFormElements > table > tbody > tr:nth-child(3) > td > textarea'
+locator_filename = '#HTMLFormElements > table > tbody > tr:nth-child(4) > td > input[type=file]:nth-child(2)'
+locator_checkbox1 = '#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(2)'
+locator_checkbox2 = '#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(3)'
+locator_checkbox3 = '#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(4)'
+locator_radio1 = '#HTMLFormElements > table > tbody > tr:nth-child(6) > td > input[type=radio]:nth-child(2)'
+locator_radio2 = '#HTMLFormElements > table > tbody > tr:nth-child(6) > td > input[type=radio]:nth-child(3)'
+locator_radio3 = '#HTMLFormElements > table > tbody > tr:nth-child(6) > td > input[type=radio]:nth-child(4)'
+locator_multiple_select_values = '#HTMLFormElements > table > tbody > tr:nth-child(7) > td > select'
+locator_dropdown = '#HTMLFormElements > table > tbody > tr:nth-child(8) > td > select'
+locator_cancel = '#HTMLFormElements > table > tbody > tr:nth-child(9) > td > input:nth-child(1)'
+locator_submit = '#HTMLFormElements > table > tbody > tr:nth-child(9) > td > input:nth-child(2)'
+
+
