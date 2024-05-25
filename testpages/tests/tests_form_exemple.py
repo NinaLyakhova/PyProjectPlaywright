@@ -69,4 +69,72 @@ def textarea(page: Page):
     return textarea_func
 
 
+@pytest.fixture
+def set_filename(page: Page):
+    def set_filename_func():
+        page.goto(data_page_form_exemple)
+        page.wait_for_timeout(1000)
+        page.click(locator_filename)
+        page.set_input_files('input[type="file"]', data_filename_path)
+        page.wait_for_timeout(1000)
+        page.click(locator_submit)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/set_filename.png")
 
+    return set_filename_func
+
+
+@pytest.fixture
+def checkbox_items(page: Page):
+    def checkbox_items_func():
+        page.goto(data_page_form_exemple)
+        page.wait_for_timeout(1000)
+        page.check("locator_checkbox1")
+        page.wait_for_timeout(1000)
+        page.click(locator_submit)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/set_filename.png")
+
+    return checkbox_items_func
+
+
+@pytest.fixture
+def radio_items(page: Page):
+    def radio_items_func():
+        page.goto(data_page_form_exemple)
+        page.wait_for_timeout(1000)
+        page.check("LOCATOR")
+        page.wait_for_timeout(1000)
+        page.click(locator_submit)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/set_filename.png")
+
+    return radio_items_func
+
+
+@pytest.fixture
+def multiple_select_values(page: Page):
+    def multiple_select_values_func():
+        page.goto(data_page_form_exemple)
+        page.wait_for_timeout(1000)
+        page.select_option("LOCATOR", value=["OPTION_1", "OPTION_2"])
+        page.wait_for_timeout(1000)
+        page.click(locator_submit)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/set_filename.png")
+
+    return multiple_select_values_func
+
+
+@pytest.fixture
+def dropdown(page: Page):
+    def dropdown_func():
+        page.goto(data_page_form_exemple)
+        page.wait_for_timeout(1000)
+        page.select_option("LOCATOR", value="OPTION")
+        page.wait_for_timeout(1000)
+        page.click(locator_submit)
+        page.wait_for_timeout(1000)
+        page.screenshot(path="screenshots/set_filename.png")
+
+    return dropdown_func

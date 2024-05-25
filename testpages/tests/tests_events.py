@@ -4,7 +4,6 @@ from testpages.data.data_events import *
 from testpages.locators.locators_events import *
 
 
-
 @pytest.fixture
 def get_playwright():
     with sync_playwright() as playwright:
@@ -100,7 +99,6 @@ def event_focus(page: Page):
         button.focus()
         page.wait_for_timeout(1000)
         page.screenshot(path="screenshots/event_on_focus.png", full_page=True)
-        text_content = page.inner_text("#onfocusstatus")
         class_event = page.query_selector(locator_on_focus).get_attribute("class")
         assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
@@ -112,13 +110,73 @@ def event_key_down(page: Page):
     def event_on_key_down_func():
         page.goto(data_page_events)
         page.wait_for_timeout(3000)
-        page.press('#keyUpButton', 'Enter')
+        page.press('#onkeydown', 'ArrowDown')
         page.wait_for_timeout(3000)
         page.screenshot(path="screenshots/event_on_key_down.png")
         class_event = page.query_selector(locator_on_key_down).get_attribute("class")
         assert class_event == data_class_event, f"Класс кнопки {class_event}"
 
     return event_on_key_down_func
+
+
+@pytest.fixture
+def event_key_up(page: Page):
+    def event_on_key_up_func():
+        page.goto(data_page_events)
+        page.wait_for_timeout(3000)
+        page.press('#onkeyup', 'ArrowUp')
+        page.wait_for_timeout(3000)
+        page.screenshot(path="screenshots/event_on_key_up.png")
+        class_event = page.query_selector(locator_on_key_up).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
+
+    return event_on_key_up_func
+
+
+@pytest.fixture
+def event_key_press(page: Page):
+    def event_on_key_press_func():
+        page.goto(data_page_events)
+        page.wait_for_timeout(3000)
+        page.press('#onkeypress', 'Space')
+        page.wait_for_timeout(3000)
+        page.screenshot(path="screenshots/event_on_key_press.png")
+        class_event = page.query_selector(locator_on_key_press).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
+
+    return event_on_key_press_func
+
+
+@pytest.fixture
+def event_mouse_over(page: Page):
+    def event_on_mouse_over_func():
+        page.goto(data_page_events)
+        page.wait_for_timeout(3000)
+        page.hover('#onmouseover')
+        page.wait_for_timeout(3000)
+        page.screenshot(path="screenshots/event_on_mouse_over.png")
+        class_event = page.query_selector(locator_on_mouse_over).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
+
+    return event_on_mouse_over_func
+
+
+@pytest.fixture
+def event_mouse_leave(page: Page):
+    def event_on_mouse_leave():
+        page.goto(data_page_events)
+        page.wait_for_timeout(3000)
+        page.click(locator_on_mouse_leave)
+        page.mouse.move(10, 0)
+        page.mouse.down()
+        page.mouse.up()
+        page.wait_for_timeout(3000)
+        page.screenshot(path="screenshots/event_on_mouse_leave.png")
+        class_event = page.query_selector(locator_on_mouse_leave).get_attribute("class")
+        assert class_event == data_class_event, f"Класс кнопки {class_event}"
+
+    return event_on_mouse_leave
+
 
 
 @pytest.fixture
@@ -134,4 +192,3 @@ def event_on_mouse_down(page: Page):
         assert "Event Triggered" in text_content
 
     return event_on_mouse_down_func
-
