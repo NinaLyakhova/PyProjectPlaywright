@@ -9,3 +9,4 @@ locator_on_key_press = "#onkeypress"
 locator_on_mouse_over = "#onmouseover"
 locator_on_mouse_leave = "#onmouseleave"
 locator_on_mouse_down = "#onmousedown"
+
