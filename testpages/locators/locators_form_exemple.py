@@ -12,5 +12,3 @@ locator_multiple_select_values = '#HTMLFormElements > table > tbody > tr:nth-chi
 locator_dropdown = '#HTMLFormElements > table > tbody > tr:nth-child(8) > td > select'
 locator_cancel = '#HTMLFormElements > table > tbody > tr:nth-child(9) > td > input:nth-child(1)'
 locator_submit = '#HTMLFormElements > table > tbody > tr:nth-child(9) > td > input:nth-child(2)'
-
-

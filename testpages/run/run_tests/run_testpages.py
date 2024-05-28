@@ -9,3 +9,8 @@ def test_web_page_example(page: Page, web_page_example):
 @pytest.mark.smoke
 def test_element_attributes(page: Page, element_attributes):
     element_attributes()
+
+
+@pytest.mark.smoke
+def test_set_filename(page: Page, set_filename):
+    set_filename()

@@ -89,7 +89,11 @@ def checkbox_items(page: Page):
     def checkbox_items_func():
         page.goto(data_page_form_exemple)
         page.wait_for_timeout(1000)
-        page.check("locator_checkbox1")
+        page.check('#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(2)')
+        page.wait_for_timeout(1000)
+        page.check('#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(3)')
+        page.wait_for_timeout(1000)
+        page.uncheck('#HTMLFormElements > table > tbody > tr:nth-child(5) > td > input[type=checkbox]:nth-child(4)')
         page.wait_for_timeout(1000)
         page.click(locator_submit)
         page.wait_for_timeout(1000)
@@ -103,11 +107,11 @@ def radio_items(page: Page):
     def radio_items_func():
         page.goto(data_page_form_exemple)
         page.wait_for_timeout(1000)
-        page.check("LOCATOR")
+        page.check('#HTMLFormElements > table > tbody > tr:nth-child(6) > td > input[type=radio]:nth-child(2)')
         page.wait_for_timeout(1000)
         page.click(locator_submit)
         page.wait_for_timeout(1000)
-        page.screenshot(path="screenshots/set_filename.png")
+        page.screenshot(path="screenshots/radio_items.png")
 
     return radio_items_func
 
@@ -117,11 +121,17 @@ def multiple_select_values(page: Page):
     def multiple_select_values_func():
         page.goto(data_page_form_exemple)
         page.wait_for_timeout(1000)
-        page.select_option("LOCATOR", value=["OPTION_1", "OPTION_2"])
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(7) > td > select', value=['ms1'])
+        page.wait_for_timeout(1000)
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(7) > td > select', value=['ms2'])
+        page.wait_for_timeout(1000)
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(7) > td > select', value=['ms3'])
+        page.wait_for_timeout(1000)
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(7) > td > select', value=['ms4'])
         page.wait_for_timeout(1000)
         page.click(locator_submit)
         page.wait_for_timeout(1000)
-        page.screenshot(path="screenshots/set_filename.png")
+        page.screenshot(path="screenshots/select_values.png")
 
     return multiple_select_values_func
 
@@ -131,10 +141,14 @@ def dropdown(page: Page):
     def dropdown_func():
         page.goto(data_page_form_exemple)
         page.wait_for_timeout(1000)
-        page.select_option("LOCATOR", value="OPTION")
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(8) > td > select', value='dd1')
+        page.wait_for_timeout(1000)
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(8) > td > select', value='dd2')
+        page.wait_for_timeout(1000)
+        page.select_option('#HTMLFormElements > table > tbody > tr:nth-child(8) > td > select', value='dd5')
         page.wait_for_timeout(1000)
         page.click(locator_submit)
         page.wait_for_timeout(1000)
-        page.screenshot(path="screenshots/set_filename.png")
+        page.screenshot(path="screenshots/dropdown.png")
 
     return dropdown_func
