@@ -1,2 +1,2 @@
-locator_testpages_index = "body > div > div.navigation > div.page-navigation > a"
-locator_h1 = 'h1'
+locator_web_page_example = '#basicpagetest'
+locator_element_attributes = '.styled-click-button'

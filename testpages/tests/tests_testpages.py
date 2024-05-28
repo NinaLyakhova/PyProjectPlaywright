@@ -2,19 +2,26 @@ from testpages.config.config_playwright import *
 from testpages.data.data_testpages import *
 from testpages.locators.locators_testpages import *
 
-@pytest.fixture
-def testpages_one(page: Page):
-    def testpages_one_func():
-        page.goto(data_page_testpages)
-        assert page.inner_text(locator_h1) == data_h1_testpages
-        page.mouse.wheel(0, 10000)
-        page.wait_for_timeout(3000)
-    return testpages_one_func
 
 @pytest.fixture
-def testpages_index(page: Page):
-    def testpages_one_func():
-        page.goto(data_page_testpages)
-        page.click(locator_testpages_index)
-        assert page.inner_text(locator_h1) == data_h1_testpages
-    return testpages_one_func
+def web_page_example(page: Page):
+    def web_page_example_func():
+        page.goto(data_web_page_example)
+        assert page.url == data_web_page_example, "Проверка загрузки страницы - не загрузилась"
+        page.click(locator_web_page_example)
+        page.wait_for_timeout(3000)
+        page.screenshot(path='screenshots/web_page_example.png')
+
+    return web_page_example_func
+
+
+@pytest.fixture
+def element_attributes(page: Page):
+    def element_attributes_func():
+        page.goto(data_element_attributes)
+        page.wait_for_timeout(3000)
+        page.click(locator_element_attributes)
+        page.wait_for_timeout(3000)
+        page.screenshot(path='screenshots/element_attributes.png')
+
+    return element_attributes_func
