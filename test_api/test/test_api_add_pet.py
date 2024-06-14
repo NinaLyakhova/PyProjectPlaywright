@@ -1,6 +1,6 @@
 import pytest
 from playwright.sync_api import sync_playwright, Page, BrowserContext
-from test_api.data.data_api_example import *
+from test_api.data.data_add_pet import *
 
 
 @pytest.fixture
@@ -31,20 +31,20 @@ def page(browser_context: BrowserContext):
 
 
 @pytest.fixture
-def api_get_pet(page: Page):
-    def api_get_pet_func():
-        response = page.request.get(data_get_pet)
+def api_add_get_pet(page: Page):
+    def api_add_get_pet_func():
+        response = page.request.get(data_add_get_pet)
         page.wait_for_timeout(1000)
         assert response.ok
         assert response.status == 200
         body = response.json()
-        assert body["name"] == data_pet_name
+        assert body["name"] == data_add_pet_name
         print("Инфа о тесте:")
         print(f"Состояние: {response.ok}")
         print(f"Статус: {response.status}")
         print(f"Имя: {body['name']}")
 
-    return api_get_pet_func
+    return api_add_get_pet_func
 
 
 @pytest.fixture
@@ -78,7 +78,7 @@ def api_post_json(page: Page):
         assert response.status == 200
         body = response.json()
         body_booking = body['booking']
-        assert body_booking['firstname'] == "Jim"
+        assert body_booking['firstname'] == "Alex"
         print("Инфа о тесте:")
         print(f"Состояние: {response.ok}")
         print(f"Статус: {response.status}")
