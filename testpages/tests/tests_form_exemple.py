@@ -149,6 +149,7 @@ def dropdown(page: Page):
         page.wait_for_timeout(1000)
         page.click(locator_submit)
         page.wait_for_timeout(1000)
-        page.screenshot(path="screenshots/dropdown.png")
+        page.screenshot(path="screenshots/dropdownя просто забыла все"
+                             ".png")
 
     return dropdown_func
